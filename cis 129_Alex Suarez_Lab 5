@@ -23,7 +23,7 @@ PAYOUT_PER_BOTTLE = 0.10 # Payout per bottle
 
 # Main program loop
 while keep_going == 'y':
-    # Step 1: Initialize variables at the start of each loop iteration
+    # Initialize variables at the start of each loop iteration
     total_bottles = 0  # count for the total number of bottles
     total_payout = 0.0  # Will store the calculated total payout
     counter = 1  # Counter for the loop that collects daily bottles
