@@ -1,0 +1,46 @@
+# Alex Suarez
+# CIS 129 Pima 2024
+# Module 5 lab 5 : Reptillian Structure
+# Description: This program allows a grocery store to keep track of the total 
+# number of bottles returned over a period of seven days. It calculates the total 
+# number of bottles and the total payout, and it allows for multiple weekly entries
+# condition controlled WHILE LOOP used  when keep going = y
+
+
+# Lab 5: Returned bottle count
+# ------------------------------------------------------------------------------
+
+# Declare variables
+total_bottles = 0  # Stores the accumulated number of bottles
+counter = 1        # Controls the loop (used in Step 4 for the count-controlled loop)
+today_bottles = 0  # Stores the number of bottles returned on a day
+total_payout = 0.0 # Stores payout (total_bottles times $0.10)
+keep_going = "y"   # Used to determine if the program should run again
+
+# Condition-controlled loop
+while keep_going == "y": # Loop runs as long as keep_going is "y"
+
+    # Count-controlled loop to collect the weekly number of bottles
+    total_bottles = 0  # Reset total_bottles for the new week
+    for day in range(7):  # Loops 7 times for 7 days of the week
+        # Collect the daily number of returned bottles
+        today_bottles = int(input(f"Enter number of bottles for day #{day + 1}: ")) # 'f' signifies an f-string which allows for inline expressions
+        total_bottles += today_bottles  # Accumulate total bottles
+
+ 
+    
+    # Calculate total payout
+    total_payout = total_bottles * 0.10  # Calculate payout from total bottles collected multiplied by .10
+    
+    # Display the weekly results
+    print(f"The total number of bottles collected is: {total_bottles}") # prints total bottles collected
+    print(f"The total paid out is: ${total_payout:.2f}") # '.2f' rounds total_payout to 2 decimal places
+    
+    # Prompt to run the program again
+    keep_going = input("Do you want to enter another week's worth of data? (Enter y or n): ").lower() # .lower converts all input characters to lowercase for uniformity, comparison , and validation in the condition-controlled loop
+
+    # "end while" not needed in python becasuse loop end is determined by indentation level
+
+
+# Program end, i like to end things clearly.
+print("Program has ended. Goodbye!") 
