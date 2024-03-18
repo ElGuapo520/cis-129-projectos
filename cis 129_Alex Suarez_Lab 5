@@ -1,6 +1,6 @@
 # Alex Suarez
 # CIS 129 Pima 2024
-# Module 5 lab 5 : Reptillian Structure
+# Module 5: Repitition Structures
 # Description: This program allows a grocery store to do qick maths for
 # number of bottles returned over a period of seven days. It calculates the total 
 # number of bottles and the total payout, and it allows for multiple weekly entries
@@ -48,4 +48,4 @@ while keep_going == 'y':
 
 # Program end, i like to end things clearly.
 print("Program has ended. Goodbye!") 
-print("Program has ended. Goodbye!") 
+
