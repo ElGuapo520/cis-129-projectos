@@ -7,8 +7,8 @@
 # condition controlled WHILE LOOP used  when keep going = y
 
 
-# Lab 5: Returned bottle count
-# ------------------------------------------------------------------------------
+# Lab 5: Returned bottle count 
+#________________________________________________________
 
 # Declare variables
 total_bottles = 0  # Stores the accumulated number of bottles
@@ -16,30 +16,34 @@ counter = 1        # Controls the loop (used in Step 4 for the count-controlled 
 today_bottles = 0  # Stores the number of bottles returned on a day
 total_payout = 0.0 # Stores payout (total_bottles times $0.10)
 keep_going = "y"   # Used to determine if the program should run again
+# Constants
+NBR_OF_DAYS = 7 # Number of days to collect bottles
+PAYOUT_PER_BOTTLE = 0.10 # Payout per bottle
 
-# Condition-controlled loop
-while keep_going == "y": # Loop runs as long as keep_going is "y"
-
-    # Count-controlled loop to collect the weekly number of bottles
-    total_bottles = 0  # Reset total_bottles for the new week
-    for day in range(7):  # Loops 7 times for 7 days of the week
-        # Collect the daily number of returned bottles
-        today_bottles = int(input(f"Enter number of bottles for day #{day + 1}: ")) # 'f' signifies an f-string which allows for inline expressions
+# Main program loop
+keep_going = 'y'
+while keep_going == 'y':
+    # Step 1: Initialize variables at the start of each loop iteration
+    total_bottles = 0  # count for the total number of bottles
+    total_payout = 0.0  # Will store the calculated total payout
+    counter = 1  # Counter for the loop that collects daily bottles
+    
+    # Step 4: Counter-controlled loop for daily bottle collection
+    while counter <= NBR_OF_DAYS:
+        print(f"Enter number of bottles returned for day #{counter}: ", end='') # Prompt user for daily bottle return count
+        today_bottles = int(input())  # Collect daily bottle return count
         total_bottles += today_bottles  # Accumulate total bottles
-
- 
+        counter += 1  # Increment counter for each day
     
-    # Calculate total payout
-    total_payout = total_bottles * 0.10  # Calculate payout from total bottles collected multiplied by .10
+    # Step 5: Calculate total payout
+    total_payout = total_bottles * PAYOUT_PER_BOTTLE
     
-    # Display the weekly results
-    print(f"The total number of bottles collected is: {total_bottles}") # prints total bottles collected
-    print(f"The total paid out is: ${total_payout:.2f}") # '.2f' rounds total_payout to 2 decimal places
+    # Step 6: Display results
+    print(f"The total number of bottles collected is: {total_bottles}") # f is used to format the string
+    print(f"The total payout is: ${total_payout:.2f}")  #.2f is used to format the string to 2 decimal places
     
-    # Prompt to run the program again
-    keep_going = input("Do you want to enter another week's worth of data? (Enter y or n): ").lower() # .lower converts all input characters to lowercase for uniformity, comparison , and validation in the condition-controlled loop
-
-    # "end while" not needed in python becasuse loop end is determined by indentation level
+    # Ask if the user wants to process another week's data
+    keep_going = input("Do you want to enter another week's worth of data? (Enter y or n): ").lower() # .lower() is used to convert the input to lowercase
 
 
 # Program end, i like to end things clearly.
