@@ -1,27 +1,27 @@
 # Alex Suarez
 # CIS 129 Pima 2024
 # Module 5 lab 5 : Reptillian Structure
-# Description: This program allows a grocery store to keep track of the total 
+# Description: This program allows a grocery store to do qick maths for
 # number of bottles returned over a period of seven days. It calculates the total 
 # number of bottles and the total payout, and it allows for multiple weekly entries
 # condition controlled WHILE LOOP used  when keep going = y
 
 
-# Lab 5: Returned bottle count 
+# Lab 5: Returned bottle count v2
 #________________________________________________________
 
 # Declare variables
+keep_going = "y"   # control variable for main while loop, each iteration represents a week
+counter = 1        # count controlled loop representing the days of corrsponding week
 total_bottles = 0  # Stores the accumulated number of bottles
-counter = 1        # Controls the loop (used in Step 4 for the count-controlled loop)
 today_bottles = 0  # Stores the number of bottles returned on a day
 total_payout = 0.0 # Stores payout (total_bottles times $0.10)
-keep_going = "y"   # Used to determine if the program should run again
+
 # Constants
 NBR_OF_DAYS = 7 # Number of days to collect bottles
 PAYOUT_PER_BOTTLE = 0.10 # Payout per bottle
 
 # Main program loop
-keep_going = 'y'
 while keep_going == 'y':
     # Step 1: Initialize variables at the start of each loop iteration
     total_bottles = 0  # count for the total number of bottles
@@ -29,7 +29,7 @@ while keep_going == 'y':
     counter = 1  # Counter for the loop that collects daily bottles
     
     # Step 4: Counter-controlled loop for daily bottle collection
-    while counter <= NBR_OF_DAYS:
+    while counter <= NBR_OF_DAYS: # Loop for 7 days
         print(f"Enter number of bottles returned for day #{counter}: ", end='') # Prompt user for daily bottle return count
         today_bottles = int(input())  # Collect daily bottle return count
         total_bottles += today_bottles  # Accumulate total bottles
@@ -47,4 +47,5 @@ while keep_going == 'y':
 
 
 # Program end, i like to end things clearly.
+print("Program has ended. Goodbye!") 
 print("Program has ended. Goodbye!") 
