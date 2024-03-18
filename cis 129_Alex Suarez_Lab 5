@@ -1,7 +1,7 @@
 # Alex Suarez
 # CIS 129 Pima 2024
 # Module 5: Repitition Structures
-# Description: This program allows a grocery store to do qick maths for
+# Description: This program allows a grocery store to do quick maths for
 # number of bottles returned over a period of seven days. It calculates the total 
 # number of bottles and the total payout, and it allows for multiple weekly entries
 # condition controlled WHILE LOOP used  when keep going = y
@@ -28,24 +28,23 @@ while keep_going == 'y':
     total_payout = 0.0  # Will store the calculated total payout
     counter = 1  # Counter for the loop that collects daily bottles
     
-    # Step 4: Counter-controlled loop for daily bottle collection
+    # Counter-controlled loop for daily bottle collection
     while counter <= NBR_OF_DAYS: # Loop for 7 days
         print(f"Enter number of bottles returned for day #{counter}: ", end='') # Prompt user for daily bottle return count
         today_bottles = int(input())  # Collect daily bottle return count
         total_bottles += today_bottles  # Accumulate total bottles
         counter += 1  # Increment counter for each day
     
-    # Step 5: Calculate total payout
+    # Calculate total payout
     total_payout = total_bottles * PAYOUT_PER_BOTTLE
     
-    # Step 6: Display results
+    # Display results
     print(f"The total number of bottles collected is: {total_bottles}") # f is used to format the string
     print(f"The total payout is: ${total_payout:.2f}")  #.2f is used to format the string to 2 decimal places
     
-    # Ask if the user wants to process another week's data
+    # Ask if the user wants to process another week of data
     keep_going = input("Do you want to enter another week's worth of data? (Enter y or n): ").lower() # .lower() is used to convert the input to lowercase
 
 
-# Program end, i like to end things clearly.
+# Program end prompt
 print("Program has ended. Goodbye!") 
-
