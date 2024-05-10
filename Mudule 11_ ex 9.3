@@ -1,0 +1,67 @@
+# Alex Suarez
+# CIS 129 Pima 2024
+# Module 11: EX 9.3 (CLASS AVERAGE: WRITING STUDENT RECORDS TO A CSV FILE)
+#_____________________________________________________________________________________________
+
+"""
+Description:
+This program collects data on student exams, processes it, and stores the results in a CSV file named 'grades.csv'.
+program prompts for student names and their corresponding exam grades. Data entry is managed through a loop, which continues until 'exit' is entered,
+allowing for dynamic input handling. The final output includes a structured display of individual grades and their stats,for monitoring performance.
+file 'grades.csv' is created or appended to, with each student's data written as a new row. The program concludes with a message confirming the successful
+append mode is better in this case, as it allows for multiple entries to be added to the file without overwriting existing data. 
+w mode not chosen because old entries would be lost.
+
+Usage: 
+- Run the program
+- Enter student's first name
+- Enter student's last name
+- Enter student's exam grades
+- Repeat for additional students
+- Enter 'exit' to finish
+- Check 'grades.csv' for the saved student records by opening the file in a text editor or spreadsheet application
+- each time programis run, it will append new entries to the file and not overwrite existing data
+- to clear the file, delete its contents or delete the file itself
+- alternatively,create a new file with a different name to store new data
+
+"""
+#_____________________________________________________________________________________________
+
+
+
+import csv
+
+def main():
+    # Open or create a CSV file to store student grades
+    with open('grades.csv', mode='a', newline='') as file:# 'a' appends to the file if it exists, creates it if it doesn't
+        writer = csv.writer(file)
+        # Write the header row
+        writer.writerow(['firstname', 'lastname', 'exam1grade', 'exam2grade', 'exam3grade'])
+        
+        while True:
+            # Input student first name or break the loop with a sentinel value
+            firstname = input("Enter student's first name (or type 'exit' to finish): ")
+            if firstname.lower() == 'exit':
+                break
+
+            # Input student last name
+            lastname = input("Enter student's last name: ")
+
+            # Collect three exam grades as integers
+            grades = []
+            for i in range(1, 4):
+                while True:
+                    try:
+                        grade = int(input(f"Enter grade for exam {i}: "))
+                        grades.append(grade)
+                        break
+                    except ValueError:
+                        print("Invalid input. Please enter an integer.")
+
+            # Write the student's data to the CSV file
+            writer.writerow([firstname, lastname] + grades)
+
+    print("Student records have been saved to 'grades.csv'.") #to create new change name of csv file here and in open statement
+
+if __name__ == "__main__":
+    main()
