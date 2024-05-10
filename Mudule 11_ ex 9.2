@@ -1,0 +1,52 @@
+# Alex Suarez
+# CIS 129 Pima 2024
+# Module 11: EX 9.2 GRADE AVERAGe file readmodule_11_ex_9.2.py
+
+# _____________________________________________________________________
+"""
+Description: 
+Reads the grades from `grades.txt`, which was created by the previous script. It then calculates and displays the total number of grades, 
+their individual values, the total sum of the grades, and the average
+
+Usage:
+- Run the script
+- The script will read the grades from the `grades.txt` file and display the individual grades, the total sum of the grades, the total number of grades, and the average of the grades
+- If the file is not found, the script will display an error message
+- If an error occurs while reading the file, the script will display an error message
+- file must be in the same directory as the script
+- to ensure this run script for ex9.1 first to create the file, and do so in the same directory as this script
+"""
+#_______________________________________________________________________
+
+
+
+# Function to read and display grades from a file
+def read_and_display_grades(filename):
+    try:
+        with open(filename, 'r') as file:
+            grades = file.readlines()
+        
+        # Convert the list of strings to integers, ignoring the last line which contains the average
+        grades = [int(grade.strip()) for grade in grades if grade.strip().isdigit()]
+        
+        # Calculate total, count, and average
+        total = sum(grades)
+        count = len(grades)
+        average = total / count if count > 0 else 0
+
+        # Display the results
+        print("Individual Grades:")
+        for grade in grades:
+            print(grade)
+        print(f"Total of grades: {total}")
+        print(f"Count of grades: {count}")
+        print(f"Average of grades: {average:.2f}")
+    
+    except FileNotFoundError:
+        print("File not found. Please make sure the grades.txt file exists.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+if __name__ == "__main__":
+    read_and_display_grades('grades.txt')
+    
