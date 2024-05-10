@@ -1,0 +1,57 @@
+# Alex Suarez
+# CIS 129 Pima 2024
+# Module 11: EX 9.1 GRADE AVERAGE
+
+#________________________________________________________
+"""
+Description:
+This script prompts the user to enter grades which are stored in 'grades.txt'. The user can enter any number
+of grades and the input is terminated by a sentinel value. After all grades are entered, the script calculates
+the class average and writes the grades to the 'grades.txt' file.
+
+Usage:
+- Run the script.
+- Enter each grade at the prompt.
+- Enter '-1' to finish inputting and calculate the class average.
+- The grades and the class average are saved to 'grades.txt'.
+"""
+#________________________________________________________
+
+
+
+def main():
+    # List to hold grades entered by the user
+    grades = []
+    
+    print("Enter grades one by one. Enter '-1' to finish and calculate the average.")
+    
+    # Continuously collect grades until the sentinel value is entered
+    while True:
+        try:
+            # Prompt for grade input and convert to integer
+            grade = int(input("Enter a grade (or -1 to finish): "))
+            if grade == -1:
+                break  # Break the loop if sentinel value is entered
+            grades.append(grade)
+        except ValueError:
+            # Handle non-integer inputs
+            print("Invalid input. Please enter an integer.")
+
+    # Calculate the class average if grades were entered
+    if grades:
+        average = sum(grades) / len(grades)
+    else:
+        average = 0  # Default average to 0 if no grades were entered
+
+    # Write grades and the average to a file
+    with open('grades.txt', 'w') as file:
+        for grade in grades:
+            file.write(f"{grade}\n")
+        file.write(f"Class average: {average:.2f}\n")  # Write the average at the end of the file
+    
+    # Inform the user
+    print(f"Grades and class average have been saved to 'grades.txt'. The average is {average:.2f}.")
+
+if __name__ == "__main__":
+    main()
+
