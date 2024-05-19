@@ -1,0 +1,89 @@
+# Alex Suarez
+# CIS 129 Pima 2024
+# Module 12 Lab: Pet Class (python and Tkinter GUI)
+# Date: 05/16/2024
+
+#________________________________________________________
+"""
+Description:
+ This program creates a Pet class with attributes for name, type, and age. 
+ The class includes mutator (setter) methods to store values in the attributes 
+ and accessor (getter) methods to retrieve these values. 
+ The program prompts the user to enter a pet's name, type, and age, stores this 
+ data in a Pet object, and then displays the pet's details using the accessor methods.
+
+ Additionally, a GUI element is implemented using Tkinter, a standard Python GUI library.
+ This feature is added to practice beyond the minimal requirements, providing 
+ a user-friendly interface for input and display. The Tkinter library is used 
+ to create dialog boxes for user input and message boxes for displaying information.
+ Tkinter is compatible with Python and works across different operating systems.
+
+Usage:
+_ The program will prompt the user to enter a pet's name, type, and age using dialog boxes.
+_ The user inputs are stored in a Pet object using the mutator methods.
+_ The program will display the pet's details in a message box using the accessor methods.
+_ The GUI dialogs are centered on the screen and the main window is kept on top.
+"""
+#________________________________________________________
+
+# Import the Tkinter library for GUI elements
+import tkinter as tk 
+from tkinter import simpledialog, messagebox # Import dialog boxes from Tkinter
+
+# Create a Pet class with private attributes for name, type, and age
+class Pet:
+    # Constructor initializes the private attributes
+    def __init__(self, name='', type_='', age=0):
+        self.__name = name      # Private attribute for pet's name
+        self.__type = type_     # Private attribute for pet's type
+        self.__age = age        # Private attribute for pet's age
+
+    # Mutators (Setters) to store values in the private attributes
+    def setName(self, name):
+        self.__name = name      # Set the pet's name
+
+    def setType(self, type_):
+        self.__type = type_     # Set the pet's type
+
+    def setAge(self, age):
+        self.__age = age        # Set the pet's age
+
+    # Accessors (Getters) to retrieve values from the private attributes
+    def getName(self):
+        return self.__name      # Get the pet's name
+
+    def getType(self):
+        return self.__type      # Get the pet's type
+
+    def getAge(self):
+        return self.__age       # Get the pet's age
+
+def main():
+    # Create the root window and hide it
+    root = tk.Tk()
+    root.withdraw()  # Hide the main window
+
+    # Center the dialog windows
+    root.eval('tk::PlaceWindow . center')
+
+    # Prompt the user for pet details using dialogs centered on the screen
+    name = simpledialog.askstring("Input", "Enter a pet name:", parent=root)
+    type_ = simpledialog.askstring("Input", "Enter a pet type:", parent=root)
+    age = simpledialog.askinteger("Input", "Enter a pet age:", parent=root)
+
+    # Create a Pet object and store the input values using mutators
+    animal = Pet()              # Create a new Pet object
+    animal.setName(name)        # Store the pet's name
+    animal.setType(type_)       # Store the pet's type
+    animal.setAge(age)          # Store the pet's age
+
+    # Retrieve and display the pet details using accessors
+    messagebox.showinfo("Pet Details", f"The pet name is {animal.getName()}\n"
+                                       f"The pet type is {animal.getType()}\n"
+                                       f"The pet age is {animal.getAge()}", parent=root)
+
+    root.quit()  # Close the main window
+
+# Main program execution starts here
+if __name__ == "__main__":
+    main()
